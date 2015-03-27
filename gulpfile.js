@@ -10,6 +10,7 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
+var mainBowerFiles = require('main-bower-files');
 
 // Lint Task
 gulp.task('lint', function() {
@@ -47,12 +48,20 @@ gulp.task('scripts', function() {
         .pipe(gulp.dest('dist/js'));
 });
 
+// Bower packages
+gulp.task('bower-files', function() {
+    return gulp.src(mainBowerFiles())
+        .pipe(gulp.dest("./dist/js/vendor"))
+});
+
 // Watch Files For Changes
 gulp.task('watch', function() {
+    gulp.watch('bower_components/*', ['images']);
     gulp.watch('app/img/*', ['images']);
     gulp.watch('app/js/*.js', ['lint', 'scripts']);
+    gulp.watch('app/less/components/*.less', ['less']);
     gulp.watch('app/less/*.less', ['less']);
 });
 
 // Default Task
-gulp.task('default', ['images', 'lint', 'less', 'scripts', 'watch']);
+gulp.task('default', ['images', 'lint', 'less', 'scripts', 'bower-files', 'watch']);
