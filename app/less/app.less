@@ -57,10 +57,20 @@ header {
 
   .header-images {
     overflow: hidden;
+    
+    .overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.8);
+        z-index: 1000;
+    }
 
     img {
       width: 20%;
       float: left;
+      -webkit-filter: blur(3px); 
+      filter: blur(3px);
     }
   }
 
@@ -68,6 +78,7 @@ header {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    z-index: 2000;
   }
 
   p, h1 {
@@ -76,6 +87,7 @@ header {
     font-style: italic;
     font-weight: 300;
     color: #fff;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
 
     span {
       font-style: normal;
