@@ -98,9 +98,12 @@ header {
   }
 }
 
+section {
+  padding: 60px 0;
+}
+
 .about {
   &:extend(.container);
-  padding: 90px 0;
 
   .about-text {
     .column(8);
@@ -123,6 +126,11 @@ header {
 .projects {
   &:extend(.container);
 
+  h2 {
+    .column(12);
+    margin-bottom: 20px;
+  }
+
   .project-image {
     width: 100%;
     border: 3px solid @c-border;
@@ -144,11 +152,15 @@ header {
 .my-skills {
   &:extend(.container);
 
-  h2 {
-    span {
-      font-size: 0.5em;
-      font-weight: 300
-    }
+  h2, img {
+    .column(12);
+    margin-bottom: 20px;
+  }
+
+  &:after {
+    display: table;
+    content: '';
+    clear: both;
   }
 }
 
@@ -165,6 +177,7 @@ footer {
   .contact-links {
     .column(2);
     padding: 0;
+    margin-left: 0;
     list-style: none;
 
     a {
@@ -183,5 +196,26 @@ footer {
 
   .send-a-message {
     .column(4);
+  }
+}
+
+#message {
+  padding: 10px 5px;
+  background-color: #f80;
+  text-align: center;
+  font-weight: bold;
+  width: 30%;
+  position: fixed;
+  z-index: 9999;
+  left: 50%;
+  margin-left: -15%;
+  transform: translateY(-60px);
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+
+
+  &.show {
+    transform: translateY(30px);
+    opacity: 1;
   }
 }
