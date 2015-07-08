@@ -21,7 +21,7 @@ body {
   font-family: 'Lato', sans-serif;
   font-size: 14px;
   padding-top: 6px;
-  color: #252525;
+  color: @c-primary;
 }
 
 .italic {
@@ -54,6 +54,7 @@ header {
   background-color: #000;
   margin-bottom: 40px;
   position: relative;
+  min-height: 500px;
 
   .header-images {
     overflow: hidden;
@@ -92,7 +93,7 @@ header {
     span {
       font-style: normal;
       font-weight: 700;
-      color: #fe0;
+      color: @c-yellow;
     }
   }
 }
@@ -111,7 +112,7 @@ header {
     border-radius: 50%;
     background-image: url(../img/profile.jpg);
     background-size: 100%;
-    border: 3px solid @border-color;
+    border: 3px solid @c-border;
 
     img {
       display: none;
@@ -124,12 +125,11 @@ header {
 
   .project-image {
     width: 100%;
-    border: 3px solid @border-color;
+    border: 3px solid @c-border;
   }
 
   .project-screen {
     max-width: 100%;
-    opacity: 0.1;
 
     &:hover {
       opacity: 0.6;
@@ -153,8 +153,9 @@ header {
 }
 
 footer {
-  background-color: @gray-bg-color;
+  background-color: @c-primary;
   color: #fff;
+  padding: 40px;
 
   .qrcode {
     margin-top: 20px;
@@ -162,12 +163,18 @@ footer {
   }
 
   .contact-links {
+    .column(2);
     padding: 0;
     list-style: none;
-  }
 
-  .contact-links {
-    .column(2);
+    a {
+      color: #fff;
+      text-decoration: none;
+
+      &:hover {
+        color: #ccc;
+      }
+    }
   }
 
   .last-blog-entry {

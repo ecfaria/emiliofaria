@@ -4,6 +4,7 @@ var gulp = require('gulp');
 // Include Our Plugins
 var jshint = require('gulp-jshint');
 var less = require('gulp-less');
+var autoprefixer = require('gulp-autoprefixer');
 var concat = require('gulp-concat');
 var minifyCSS = require('gulp-minify-css');
 var uglify = require('gulp-uglify');
@@ -34,6 +35,9 @@ gulp.task('less', function() {
         .pipe(less())
         .pipe(gulp.dest('dist/css'))
         .pipe(rename('main.min.css'))
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions'],
+        }))
         .pipe(minifyCSS())
         .pipe(gulp.dest('dist/css'));
 });
